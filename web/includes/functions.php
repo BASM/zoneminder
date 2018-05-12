@@ -2057,20 +2057,9 @@ function detaintPath( $path ) {
 }
 
 function cache_bust( $file ) {
-  # Use the last modified timestamp to create a link that gets a different filename
-  # To defeat caching.  Should probably use md5 hash
-  $parts = pathinfo($file);
-  global $css;
-  $dirname = preg_replace( '/\//', '_', $parts['dirname'] );
-  $cacheFile = $dirname.'_'.$parts['filename'].'-'.$css.'-'.filemtime($file).'.'.$parts['extension'];
-  if ( file_exists( ZM_DIR_CACHE.'/'.$cacheFile ) or symlink( ZM_PATH_WEB.'/'.$file, ZM_DIR_CACHE.'/'.$cacheFile ) ) {
-    return 'cache/'.$cacheFile;
-  } else {
-    Warning("Failed linking $file to $cacheFile");
-  }
+	# does not work well, deleted
   return $file;
 }
-
 function getSkinFile( $file ) {
   global $skinBase;
   $skinFile = false;

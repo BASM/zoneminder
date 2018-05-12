@@ -46,7 +46,7 @@ function xhtmlHeaders( $file, $title ) {
     $html = array();
     foreach ( $files as $file ) {
       if ( getSkinFile( $file ) ) {
-        $html[] = '<link rel="stylesheet" href="'.cache_bust( 'skins/'.$skin.'/'.$file ).'" type="text/css"/>';
+        $html[] = '<link rel="stylesheet" href="skins/'.$skin.'/'.$file'" type="text/css"/>';
       }
     }
     return implode("\n", $html);
